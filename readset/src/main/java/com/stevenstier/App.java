@@ -15,7 +15,7 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 public class App{
 	public static void main(String[] args) throws InterruptedException {
 		System.out.println("Starting Main...");
-		System.out.println("When you press button connected to GPIO16, LED on GPIO23 should light.");
+		System.out.println("When you press the button connected to GPIO16, LED on GPIO23 should light.");
 		//Use the Broadcom Gpio Pin Numbering Scheme
 		GpioFactory.setDefaultProvider(new RaspiGpioProvider(RaspiPinNumberingScheme.BROADCOM_PIN_NUMBERING));
 		// create a GPIO Contoller
