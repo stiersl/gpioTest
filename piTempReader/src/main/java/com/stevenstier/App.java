@@ -6,6 +6,7 @@ public class App
   private static final String W1_DEVICE_PATH = "/sys/bus/w1/devices/";
   // device name //
   private static final String DEVICE_NAME = "28-0000081bf384";
+  //private static final String DEVICE_NAME = "28-00000880474d";
   // Name of file to read
   private static final String FILE_NAME = "/w1_slave";
     
