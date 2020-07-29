@@ -2,17 +2,13 @@ package com.stevenstier;
 
 public class App 
 {
-  // path to where to find the one Wire device Files
-  private static final String W1_DEVICE_PATH = "/sys/bus/w1/devices/";
   // device name //
   private static final String DEVICE_NAME = "28-0000081bf384";
   //private static final String DEVICE_NAME = "28-00000880474d";
-  // Name of file to read
-  private static final String FILE_NAME = "/w1_slave";
     
   public static void main(String[] args) {
     System.out.println("*****Temp Read Program Starting*****");
-    OneWireTemperatureFileReader myTempFileReader = new OneWireTemperatureFileReader(W1_DEVICE_PATH + DEVICE_NAME + FILE_NAME);
+    OneWireTemperatureFileReader myTempFileReader = new OneWireTemperatureFileReader(DEVICE_NAME);
     try {
       System.out.println("Press Any Key to exit reading!.");
       do {
