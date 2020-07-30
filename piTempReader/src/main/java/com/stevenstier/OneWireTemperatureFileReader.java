@@ -11,26 +11,33 @@ import java.util.List;
 public class OneWireTemperatureFileReader {
 	private Path myPath;
 	private File myFile;
+	private String deviceCode;
 	private String fileName;
 	private String currentTemperature;
 	private boolean quality;
 	private boolean fileExists = false;
 
-	// path to where to find the one Wire device Files
+	// path to where to find the one Wire device Files-note this 
+	// is the standard location on a raspberry pi
 	private final String W1_DEVICE_PATH = "/sys/bus/w1/devices/";
-	// Name of file to read
+	// Name of file to read - this is also standard
 	private final String FILE_NAME = "/w1_slave";
 	 
 	
-	public OneWireTemperatureFileReader(String deviceName) {
-	fileName = W1_DEVICE_PATH + deviceName + FILE_NAME;
-	myPath = FileSystems.getDefault().getPath(fileName);
-	myFile = new File(fileName);
-	if (myFile.exists() && myFile.isFile()) {
-		this.fileExists = true;
-	} else {
-		System.out.println("The file:" + fileName + " Doesn't Exist!");
-	} 
+	public OneWireTemperatureFileReader(String deviceCodeInput) {
+		this.deviceCode = deviceCodeInput;
+		fileName = W1_DEVICE_PATH + deviceCode + FILE_NAME;
+		myPath = FileSystems.getDefault().getPath(fileName);
+		myFile = new File(fileName);
+		if (myFile.exists() && myFile.isFile()) {
+			this.fileExists = true;
+		} else {
+			System.out.println("The file:" + fileName + " Doesn't Exist!");
+		} 
+	}
+
+	public String getDeviceCode() {
+		return this.deviceCode;
 	}
 
 	public String getFileName() {
@@ -46,7 +53,14 @@ public class OneWireTemperatureFileReader {
 	}
 	public boolean isFileExists() {
 		return this.fileExists;
-		}
+	}
+	public String getW1_DEVICE_PATH() {
+		return this.W1_DEVICE_PATH; 
+	}
+
+	public String getFILE_NAME() {
+		return this.FILE_NAME; 
+	}
 
 	public String readTemp() {
 		String result = "??";
